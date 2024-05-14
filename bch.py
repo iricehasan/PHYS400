@@ -4,15 +4,6 @@ from itertools import permutations, product
 from math import factorial
 from fractions import Fraction
 
-def generate_permutations(n):
-    # Generate element names dynamically
-    elements = [f'X{i+1}' for i in range(n)]
-    
-    # Generate all permutations of the elements
-    perm = permutations(elements)
-    
-    return list(perm)
-
 # calculates the descent number in permutations
 def descent_count(m, perm):
     """Count the number of descents in the permutation with a dynamic hierarchy."""

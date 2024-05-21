@@ -116,15 +116,9 @@ def convert_coeffs_to_fractions(expr):
         # Recursively apply this to all arguments in other expressions
         return expr.func(*(convert_coeffs_to_fractions(arg) for arg in expr.args), evaluate=False)
 
-# Example usage
-m = 3  # For example, calculate Φ3(X, Y)
-
-operators = sp.symbols('X Y', commutative=False) 
-
-for m in range(1,4):
-    phi_3 = calculate_big_phi_m(operators, m)
-    phi_3_summed = sum(phi_3)
-    converted_expression = convert_coeffs_to_fractions(phi_3_summed)
-    print(f"Φ{m}(X, Y) =", phi_3_summed, "\n")
-    sp.pprint(converted_expression, use_unicode=True)
-
+def bch_expansion_up_to_order(operators, order):
+    expansion_terms = []
+    for m in range(1, order + 1):
+        phi_m_terms = calculate_big_phi_m(operators, m)
+        expansion_terms.extend(phi_m_terms)
+    return sum(expansion_terms)

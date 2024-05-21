@@ -1,8 +1,14 @@
 from sympy.physics.quantum import Commutator, Operator
-from sympy import *
+import sympy as sp
 from itertools import permutations, product
 from fractions import Fraction
-init_printing(use_unicode=True) # allow LaTeX printing
+from bch import (
+    calculate_phi_n,
+    calculate_big_phi_m_for_2_operators,
+    calculate_big_phi_m,
+    bch_expansion_up_to_order,
+    convert_coeffs_to_fractions
+)
 
 def group_terms_by_commutator(expr, commutators):
     terms = expr.as_ordered_terms()
